@@ -1,6 +1,29 @@
-version: '3'
+version: "3.8"
 services:
-  mongo:
-    image: mongo
+  nestjs:
+    build: .
+    container_name: nestjs
     ports:
-      - '27017:27017'
+      - "3000:3000"
+    depends_on:
+      - mongodb
+    environment:
+      MONGO_URI: mongodb://mongodb:27017/urls
+    networks:
+      - nest-network
+
+  mongodb:
+    image: mongo
+    container_name: mongodb
+    restart: always
+    volumes:
+      - mongodb_data:/data/db
+    networks:
+      - nest-network
+
+volumes:
+  mongodb_data:
+
+networks:
+  nest-network:
+    driver: bridge
