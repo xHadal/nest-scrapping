@@ -12,11 +12,11 @@ $ npm install
 
 ```bash
 # Container image
-$ docker container up
+$ docker compose up
 
 ```
 
-## Postman
+## Testing with Postman
 
 <ol>
   <li>GET All: Launch GET request to http://localhost:3000/</li>
